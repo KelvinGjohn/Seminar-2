@@ -30,5 +30,22 @@ public class Student {
 	public String getPassportNumber() {
 		return passportNumber;
 	}
+	//[A-Z]{1}[a-z]{3,7}([ ]{1}[A-Z]{1}[a-z]{3,7})?
+	//Setters
+	public void setName(String inputName) {
+		if((inputName != null) && (!inputName.isEmpty()) 
+				&& (inputName.matches("/[L]{1}[V]{1}[0-9]{2}[A-Z]{4}[0-9]{13}? ")) ) {
+		name = inputName;
+	}
+	else
+	{
+		name = "Unknown";
+	}
+	public void setSurname(String inputSurname) {
+		Surname = surname;
+	}
+	public void setFaculty(String inputFaculty) {
+		Faculty = faculty;
+	}
 
 }
