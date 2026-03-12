@@ -96,4 +96,39 @@ public class Student {
 			passportNumber = "Unknown";
 		}
 	}
+	
+	public Student() {
+		setMatriculaNumber("AB123456");
+		setName("Hello");
+		setSurname('Hi');
+		setFaculty('2ITF');
+		setBirthYear(2035);
+		setCountry(Country.Germany);
+		setPassportNumber('GU123456');
+	}
+	
+	public Student(String inputMatriciulaNumber, String inputName,) {
+		
+	}
+	public String toString() {
+		String result = name + '' + surname + '(' + matriculation + ')' + faculty + ',' + birthyear + '[' + country + '],
+				
+	}
+	
+	public Student (String inputMatriculationNumber, String inputName,
+			String inputSurname, String inputFaculty,
+			int inputBirthYear, Country inputCountry,
+			String inputPassportNumber) {
+			
+			setMatriculaNumber(inputMatriculationNumber);
+			setName(inputName);
+			setSurname(inputSurname);
+			setFaculty(inputFaculty);
+			setBirthYear(inputBirthYear);
+			setCountry(inputCountry);
+			setPassportNumber(inputPassportNumber);
+			
+	}
+			
+	
 }
