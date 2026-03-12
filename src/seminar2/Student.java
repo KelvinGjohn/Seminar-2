@@ -24,7 +24,7 @@ public class Student {
 	public int getBirthYear() {
 		return birthYear;
 	}
-	public String getCountry() {
+	public Country getCountry() {
 		return country;
 	}
 	public String getPassportNumber() {
@@ -41,11 +41,59 @@ public class Student {
 	{
 		name = "Unknown";
 	}
+	}
 	public void setSurname(String inputSurname) {
-		Surname = surname;
+		if( (inputSurname != null) && (!inputSurname.isEmpty()) 
+			&& (inputSurname.matches("[A-Z]{1}[a-z]{2,15}([ ]{1}[A-Z]{1}[a-z]{2,15})?"))) {
+			surname = inputSurname;
+		}
+		else
+		{
+			surname = "Unknown";
+		}
+		
 	}
+	
 	public void setFaculty(String inputFaculty) {
-		Faculty = faculty;
+		if((inputFaculty != null) && (!inputFaculty.isEmpty())
+				&& (inputFaculty.matches("[A-Za-z ]{3,100}"))) {
+			faculty = inputFaculty;
+		}
+		else
+		{
+			faculty = "Unknown";
+		}
 	}
-
+	
+	//no need to check !=null because this is primitive data type
+	public void setBirthYear(int inputBirthYear) {
+		if((inputBirthYear >= 1950) && (inputBirthYear <= 2020)) {
+			birthYear = inputBirthYear;
+		}
+		else
+		{
+			birthYear = 2008;
+		}
+	}
+	//enums also are referenced data type - need to check != null
+	public void setCountry(Country inputCountry) {
+		if(inputCountry != null) {
+			country = inputCountry;
+		}
+		else
+		{
+			country = Country.unknown;
+		}
+	}
+	
+	public void setPassportNumber(String inputPassportNumber) {
+		if( (inputPassportNumber != null) && (!inputPassportNumber.isEmpty()
+				&& (inputPassportNumber.matches("[A-Z]{2}[0-9]{6}")))) {
+			passportNumber = inputPassportNumber;
+		}
+		else
+		{
+			passportNumber = "Unknown";
+		}
+	}
 }
