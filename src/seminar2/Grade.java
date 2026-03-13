@@ -63,7 +63,7 @@ public class Grade {
 	//4.no-args constr
 	public Grade() {
 		setId();
-		setGradeValue(10);
+		setGradeValue(2);
 		setStudent(new Student());
 		setCourse(new Course());
 	}
@@ -80,10 +80,11 @@ public class Grade {
 	public String toString() {
 		
 		String result = id + ": " + student.getName() + " " + student.getSurname()  +
-				" (" + course.getTitle() + ")";
+				" (" + course.getTitle() + ")" + gradeValue;
 		return result;
 	}
 	
 	//7. other functions(if necessary)
+	
 
 }
