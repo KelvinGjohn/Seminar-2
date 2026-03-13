@@ -1,6 +1,8 @@
 package seminar2;
 
+//Model class - data class
 public class Student {
+	//1. variables
 	private String matriculaNumber;
 	private String name;
 	private String surname;
@@ -8,40 +10,60 @@ public class Student {
 	private int birthYear;
 	private Country country;
 	private String passportNumber;
-	
-	public String getMatriculation() {
+	//2. getters
+	public String getMatriculaNumber() {
 		return matriculaNumber;
 	}
 	public String getName() {
 		return name;
 	}
+	
 	public String getSurname() {
 		return surname;
 	}
+	
 	public String getFaculty() {
 		return faculty;
 	}
+	
 	public int getBirthYear() {
 		return birthYear;
 	}
+	
 	public Country getCountry() {
 		return country;
 	}
+	
 	public String getPassportNumber() {
 		return passportNumber;
 	}
-	//[A-Z]{1}[a-z]{3,7}([ ]{1}[A-Z]{1}[a-z]{3,7})?
-	//Setters
+	
+	//3. setters
+	public void setMatriculaNumber(String inputMatriculaNumber) {
+		if( (inputMatriculaNumber != null) 
+				&& (!inputMatriculaNumber.isEmpty())
+				&& (inputMatriculaNumber.matches("[A-Z]{2}[0-9]{6}"))) {
+			matriculaNumber = inputMatriculaNumber;
+		}
+		else
+		{
+			matriculaNumber = "AA000000";
+		}
+	}
+	
+	
 	public void setName(String inputName) {
-		if((inputName != null) && (!inputName.isEmpty()) 
-				&& (inputName.matches("/[L]{1}[V]{1}[0-9]{2}[A-Z]{4}[0-9]{13}? ")) ) {
-		name = inputName;
+		if( (inputName != null) && (!inputName.isEmpty()) 
+			&& (inputName.matches("[A-Z]{1}[a-z]{2,15}([ ]{1}[A-Z]{1}[a-z]{2,15})?"))) {
+			name = inputName;
+		}
+		else
+		{
+			name = "Unknown";
+		}
+		
 	}
-	else
-	{
-		name = "Unknown";
-	}
-	}
+	
 	public void setSurname(String inputSurname) {
 		if( (inputSurname != null) && (!inputSurname.isEmpty()) 
 			&& (inputSurname.matches("[A-Z]{1}[a-z]{2,15}([ ]{1}[A-Z]{1}[a-z]{2,15})?"))) {
@@ -97,38 +119,40 @@ public class Student {
 		}
 	}
 	
+	//4. no-arg constructor
 	public Student() {
 		setMatriculaNumber("AB123456");
-		setName("Hello");
-		setSurname('Hi');
-		setFaculty('2ITF');
-		setBirthYear(2035);
-		setCountry(Country.Germany);
-		setPassportNumber('GU123456');
+		setName("Aref");
+		setSurname("Hosseini");
+		setFaculty("ITF");
+		setBirthYear(2006);
+		setCountry(Country.spain);
+		setPassportNumber("SP092345");
 	}
-	
-	public Student(String inputMatriciulaNumber, String inputName,) {
+	//5. arg-constructor
+	public Student(String inputMatriculaNumber,String inputName,
+		String inputSurname, String inputFaculty, 
+		int inputBirthYear, Country inputCountry, 
+		String inputPassportNumber) {
 		
-	}
+		setMatriculaNumber(inputMatriculaNumber);
+		setName(inputName);
+		setSurname(inputSurname);
+		setFaculty(inputFaculty);
+		setBirthYear(inputBirthYear);
+		setCountry(inputCountry);
+		setPassportNumber(inputPassportNumber);
+		}
+	//6.toString
 	public String toString() {
-		String result = name + '' + surname + '(' + matriculation + ')' + faculty + ',' + birthyear + '[' + country + '],
-				
+		
+		//Aref Hosseini (AB123456) ITF, 2006 [Spain], SP092345
+		String result = name + " " + surname 
+				+ " (" + matriculaNumber + ") " + faculty
+				+ ", " + birthYear + " [" + country + "], "
+				+ passportNumber;
+		return result;
 	}
-	
-	public Student (String inputMatriculationNumber, String inputName,
-			String inputSurname, String inputFaculty,
-			int inputBirthYear, Country inputCountry,
-			String inputPassportNumber) {
-			
-			setMatriculaNumber(inputMatriculationNumber);
-			setName(inputName);
-			setSurname(inputSurname);
-			setFaculty(inputFaculty);
-			setBirthYear(inputBirthYear);
-			setCountry(inputCountry);
-			setPassportNumber(inputPassportNumber);
-			
-	}
-			
-	
+	//7. other functions
+
 }
