@@ -1,25 +1,47 @@
 package service;
 
+import java.util.ArrayList;
+
 import seminar2.Country;
 import seminar2.Course;
+import seminar2.Grade;
 import seminar2.ProfDegree;
 import seminar2.Professor;
 import seminar2.Student;
 
 public class MainService {
+	
+	private static ArrayList<Student> allStudents
+				= new ArrayList<Student>();
+	private static ArrayList<Professor> allProfessor
+				= new ArrayList<Professor>();
+	private static ArrayList<Course> allCourse
+	   			= new ArrayList<Course>();
+	private static ArrayList<Grade> Grades
+				= new ArrayList<Grade>();
+
+				
 
 	public static void main(String[] args) {
 		System.out.println("-----------STUDENTS---------");
 		Student stud1 = new Student();//Aref which is default student
 		System.out.println(stud1);
+		allStudents.add(stud1);
 		
 		Student stud2 = new Student("AB987654", "John", "Sarfo",
 				"ITF", 2007, Country.other, "LU236890");
 		System.out.println(stud2);
+		allStudents.add(stud2);
+		
+		Student stud3= new Student("AB987654", "New","Gamer",
+				"ITF", 2007, Country.other, "LU236770");
+		System.out.println(stud3);
+		allStudents.add(stud3);
 		
 		System.out.println("-----------PROFESSORS---------");
 		Professor prof1 = new Professor();//Karina which is default professor
 		System.out.println(prof1);
+		
 		Professor prof2 = new Professor("Estere", "Vitola",ProfDegree.master);
 		System.out.println(prof2);
 		//some wrong values as input arguments
@@ -32,9 +54,63 @@ public class MainService {
 		
 		Course course2 = new Course("Data Structures", 10, prof2);
 		System.out.println(course2);
+		Course course3 = new Course("Mathematics", 7, prof3);
+		System.out.println(course3);
+		
+		
+		System.out.println("grade class");
+		Grade gr1 = new Grade();
+		System.out.println(gr1);
+		Grade gr2 = new Grade(5, stud2,course2);
+		System.out.println(gr2);
+		Grade gr3 = new Grade(8, stud3, course3);
+		System.out.println(gr3);
+		
+		System.out.println("professs");
+		filterAllProfessorsWithDegree(ProfDegree.master);
+		System.out.println("PROFESSWITHPHD");
+		filterAllProfessorsWithDegree(ProfDegree.phd);
+		
+		System.out.println("-----------BIRTHYEAR--------");
+		filterAllStudentswithlargerbirthyeartlargerthan2005();
+		
+		
+	
 		
 		
 		
 	}
+	
+	public static void filterAllProfessorsWithDegree(ProfDegree degree) {
+		for(Professor tempS : allProfessor) {
+			if (tempS.getDegree().equals(degree)) {
+				System.out.println(tempS);
+			}
+		}
+	}
+	public static void filterAllStudentswithlargerbirthyeartlargerthan2005() {
+		for(Student tempS : allStudents) {
+			if (tempS.getBirthYear()>2006) {
+				System.out.println(tempS);
+			}
+		}
+	}
+	
+	public static void filterAllStudentswithfacultyITF() {
+		for(Student tempS : allStudents) {
+			if (tempS.getFaculty().equals(faculty)){
+				System.out.println(tempS);
+			}
+		}
+	}
+	
+	public static void filterProfessorWithSpecificDegree() {
+		for(Professor tempS : allProfessor) {
+			
+			
+		}
+			
+	}
+
 
 }
