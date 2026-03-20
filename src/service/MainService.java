@@ -86,7 +86,7 @@ public class MainService {
 		filterAllFunctionForCourse(1);
 		
 
-		System.out.println("-------Grade------");
+		System.out.println("-------LessGrade------");
 		
 		filteringFunctionsForGradeLessThan4();
 			
