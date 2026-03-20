@@ -99,11 +99,13 @@ public class MainService {
 		createNewProfessor("James","Janis",ProfDegree.master, "JD5327816");
 		System.out.println(allProfessor);
 		
-		System.out.println(getProfessorById(5));
-		updateProfessorByid(2,"lady","master", ProfDegree.phd);
+		System.out.println(getProfessorById(1));
+		updateProfessorByid(2,"Lady","Master", ProfDegree.phd);
+		System.out.println(allProfessor);
 		
 	}  catch (Exception e) {
 		System.out.println(e.getMessage());
+		
 	}
 	try {
 		
@@ -217,6 +219,6 @@ public class MainService {
 		}
 	
 		
-	public static void deleteProfessor
+//	public static void deleteProfessor
 		
 }
