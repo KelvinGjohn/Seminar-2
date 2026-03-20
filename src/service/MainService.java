@@ -1,6 +1,7 @@
 package service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import seminar2.Country;
 import seminar2.Course;
@@ -29,7 +30,7 @@ public class MainService {
 		allStudents.add(stud1);
 		
 		Student stud2 = new Student("AB987654", "John", "Sarfo",
-				"ITF", 2007, Country.other, "LU236890");
+				"EPF", 2007, Country.other, "LU236890");
 		System.out.println(stud2);
 		allStudents.add(stud2);
 		
@@ -56,15 +57,16 @@ public class MainService {
 		System.out.println(course2);
 		Course course3 = new Course("Mathematics", 7, prof3);
 		System.out.println(course3);
-		
+		allCourse.addAll(Arrays.asList(course1, course2, course3));
 		
 		System.out.println("grade class");
-		Grade gr1 = new Grade();
+		Grade gr1 = new Grade(2, stud1, course1);
 		System.out.println(gr1);
-		Grade gr2 = new Grade(5, stud2,course2);
+		Grade gr2 = new Grade(4, stud2,course2);
 		System.out.println(gr2);
 		Grade gr3 = new Grade(8, stud3, course3);
 		System.out.println(gr3);
+		Grades.addAll(Arrays.asList(gr1, gr2, gr3));
 		
 		System.out.println("professs");
 		filterAllProfessorsWithDegree(ProfDegree.master);
@@ -73,6 +75,23 @@ public class MainService {
 		
 		System.out.println("-----------BIRTHYEAR--------");
 		filterAllStudentswithlargerbirthyeartlargerthan2005();
+		
+		
+		System.out.println("-----------ITF--------");
+		
+		filterAllStudentswithfacultyITF("ITF");
+		
+		System.out.println("-------Course------");
+		
+		filterAllFunctionForCourse(1);
+		
+
+		System.out.println("-------Grade------");
+		
+		filteringFunctionsForGradeLessThan4();
+			
+			
+		
 		
 		
 	
@@ -96,7 +115,7 @@ public class MainService {
 		}
 	}
 	
-	public static void filterAllStudentswithfacultyITF() {
+	public static void filterAllStudentswithfacultyITF(String faculty) {
 		for(Student tempS : allStudents) {
 			if (tempS.getFaculty().equals(faculty)){
 				System.out.println(tempS);
@@ -104,13 +123,31 @@ public class MainService {
 		}
 	}
 	
-	public static void filterProfessorWithSpecificDegree() {
+	public static void filterAllFunctionForCourse(long id) {
+		for (Course tempsC : allCourse) {
+			if (tempsC.getProfessor().getId() == id) {
+				System.out.println(tempsC);
+			
+			}
+		}
+	}
+	
+	public static void filteringFunctionsForGradeLessThan4() {
+		for (Grade tempS : Grades) {
+			if (tempS.getGradeValue()< 4) {
+				System.out.println(tempS);
+			}
+		}
+		
+	}
+	
+	/*public static ArrayList<Student>
 		for(Professor tempS : allProfessor) {
 			
 			
 		}
 			
-	}
+	}*/
 
 
 }
