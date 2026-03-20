@@ -1,5 +1,6 @@
 package service;
 
+import java.awt.im.InputContext;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -42,12 +43,14 @@ public class MainService {
 		System.out.println("-----------PROFESSORS---------");
 		Professor prof1 = new Professor();//Karina which is default professor
 		System.out.println(prof1);
-		
+		allProfessor.add(prof1);
 		Professor prof2 = new Professor("Estere", "Vitola",ProfDegree.master,"KN4177625");
 		System.out.println(prof2);
+		allProfessor.add(prof2);
 		//some wrong values as input arguments
 		Professor prof3 = new Professor("%#^%#&^%&^$^%#", "287646",null, "GJ125872");
 		System.out.println(prof3);
+		allProfessor.add(prof3);
 		
 		System.out.println("-----------COURSES---------");
 		Course course1 = new Course();
@@ -89,7 +92,15 @@ public class MainService {
 		System.out.println("-------LessGrade------");
 		
 		filteringFunctionsForGradeLessThan4();
-			
+		
+		System.out.println("-------Call-Professor------");
+	try {
+	
+		createNewProfessor("James","Janis",ProfDegree.master, "JD5327816");
+		System.out.println(allProfessor);
+	}  catch (Exception e) {
+		System.out.println(e.getMessage());
+	}
 			
 		
 		
@@ -141,6 +152,22 @@ public class MainService {
 		
 	}
 	
+	public static void createNewProfessor(String inputName, String inputSurname,
+			ProfDegree inputDegree, String inputPassportNumber) throws Exception{
+		for (Professor tempX: allProfessor)
+		{
+				
+			if(tempX.getpassportNumber().equals(inputPassportNumber)) {
+			Exception myEx =
+					new Exception("Professor already exists");
+			throw myEx;
+		}
+		
+	}
+	Professor newProfessor =
+	new Professor(inputName,inputSurname, inputDegree, inputPassportNumber);
+	allProfessor.add(newProfessor);
+	
 	
 	
 	/*public static ArrayList<Student>
@@ -152,4 +179,5 @@ public class MainService {
 	}*/
 
 
+}
 }
