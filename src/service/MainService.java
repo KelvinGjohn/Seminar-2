@@ -43,10 +43,10 @@ public class MainService {
 		Professor prof1 = new Professor();//Karina which is default professor
 		System.out.println(prof1);
 		
-		Professor prof2 = new Professor("Estere", "Vitola",ProfDegree.master);
+		Professor prof2 = new Professor("Estere", "Vitola",ProfDegree.master,"KN4177625");
 		System.out.println(prof2);
 		//some wrong values as input arguments
-		Professor prof3 = new Professor("%#^%#&^%&^$^%#", "287646", null);
+		Professor prof3 = new Professor("%#^%#&^%&^$^%#", "287646",null, "GJ125872");
 		System.out.println(prof3);
 		
 		System.out.println("-----------COURSES---------");
@@ -140,6 +140,8 @@ public class MainService {
 		}
 		
 	}
+	
+	
 	
 	/*public static ArrayList<Student>
 		for(Professor tempS : allProfessor) {
