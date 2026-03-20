@@ -98,8 +98,19 @@ public class MainService {
 	
 		createNewProfessor("James","Janis",ProfDegree.master, "JD5327816");
 		System.out.println(allProfessor);
+		
+		System.out.println(getProfessorById(5));
+		updateProfessorByid(2,"lady","master", ProfDegree.phd);
+		
 	}  catch (Exception e) {
 		System.out.println(e.getMessage());
+	}
+	try {
+		
+		System.out.println(getProfessorById(0));
+	}  catch (Exception e) {
+		System.out.println(e.getMessage());
+		
 	}
 			
 		
@@ -180,4 +191,32 @@ public class MainService {
 
 
 }
+	public static Professor getProfessorById(long inputId) throws Exception{
+		if (inputId < 0 ) { 
+			Exception myEx = new Exception("ahhhh must be positive you boy");
+			throw myEx;
+		}
+		for(Professor tempS :allProfessor) {
+			if (tempS.getId() == inputId) {
+				return tempS;
+			}
+		}
+		Exception myEx = new Exception("NO HERE CHECK THE NXT DOOR" + 	inputId);
+			throw myEx;
+	}
+	
+
+	public static void  updateProfessorByid(long inputId,
+		String inputName, String inputSurname,
+		ProfDegree inputDegree) throws Exception{
+			Professor profForUpdate = getProfessorById(inputId);
+			
+			profForUpdate.setName(inputName);
+			profForUpdate.setSurname(inputSurname);
+			profForUpdate.setDegree(inputDegree);
+		}
+	
+		
+	public static void deleteProfessor
+		
 }
