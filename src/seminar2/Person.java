@@ -1,9 +1,11 @@
 package seminar2;
 
+
+
 public class Person {
-	private String name;
-	private String surname;
-	private String passportNumber;
+	protected String name;
+	protected String surname;
+	protected String passportNumber;
 	
 	public String getName() {
 		return name;
@@ -51,5 +53,25 @@ public class Person {
 			passportNumber = "Unknown";
 		}
 	}
+	
+	public Person() {}
+	public Person(String inputNameString,String inputSurname, String inputPassport) {
+		// TODO Auto-generated constructor stub
+		setName(inputNameString);
+	setSurname(inputSurname);
+	setPassportNumber(inputPassport);	
+		
+	}
+	
+	public String toString() {
+		
+		
+		String result = name + " " + surname 
+				+ " "
+				+ passportNumber;
+		return result;
+	}
+	
+	 
 
 }

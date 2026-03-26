@@ -1,7 +1,7 @@
 package seminar2;
 
 //Model class - data class
-public class Student {
+public class Student extends Person{
 	//1. variables
 	private String matriculaNumber;
 
@@ -77,16 +77,7 @@ public class Student {
 		}
 	}
 	
-	public void setPassportNumber(String inputPassportNumber) {
-		if( (inputPassportNumber != null) && (!inputPassportNumber.isEmpty()
-				&& (inputPassportNumber.matches("[A-Z]{2}[0-9]{6}")))) {
-			passportNumber = inputPassportNumber;
-		}
-		else
-		{
-			passportNumber = "Unknown";
-		}
-	}
+
 	
 	//4. no-arg constructor
 	public Student() {
