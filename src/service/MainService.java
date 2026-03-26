@@ -7,16 +7,21 @@ import java.util.Arrays;
 import seminar2.Country;
 import seminar2.Course;
 import seminar2.Grade;
+import seminar2.Person;
 import seminar2.ProfDegree;
 import seminar2.Professor;
 import seminar2.Student;
 
 public class MainService {
 	
-	private static ArrayList<Student> allStudents
-				= new ArrayList<Student>();
-	private static ArrayList<Professor> allProfessor
-				= new ArrayList<Professor>();
+	//private static ArrayList<Student> allStudents
+				//= new ArrayList<Student>();
+	//private static ArrayList<Professor> allProfessor
+				//= new ArrayList<Professor>();
+	
+	private static ArrayList<Person> myperson = new ArrayList<Person>();
+		
+	
 	private static ArrayList<Course> allCourse
 	   			= new ArrayList<Course>();
 	private static ArrayList<Grade> Grades
@@ -28,29 +33,50 @@ public class MainService {
 		System.out.println("-----------STUDENTS---------");
 		Student stud1 = new Student();//Aref which is default student
 		System.out.println(stud1);
-		allStudents.add(stud1);
+		myperson.add(stud1);
+		
+		for(Person tempP : myperson) {
+			if (tempP instanceof Student) {
+				System.out.println(tempP);
+			}
+		}
+		
+		
+		
 		
 		Student stud2 = new Student("AB987654", "John", "Sarfo",
 				"EPF", 2007, Country.other, "LU236890");
 		System.out.println(stud2);
-		allStudents.add(stud2);
+		myperson.add(stud2);
 		
 		Student stud3= new Student("AB987654", "New","Gamer",
 				"ITF", 2007, Country.other, "LU236770");
 		System.out.println(stud3);
-		allStudents.add(stud3);
+		myperson.add(stud3);
+		
+		System.out.println("form latvia");
+		for (int i = 0; i< myperson.size(); i++) {
+			if(myperson.get(i) instanceof Student)
+			{
+				Student tempStudent = (Student)myperson.get(i);
+				if(tempStudent.getCountry().equals(Country.latvia)) {
+					System.out.println(tempStudent);
+				}
+			}
+		}
+		
 		
 		System.out.println("-----------PROFESSORS---------");
 		Professor prof1 = new Professor();//Karina which is default professor
 		System.out.println(prof1);
-		allProfessor.add(prof1);
+		myperson.add(prof1);
 		Professor prof2 = new Professor("Estere", "Vitola",ProfDegree.master,"KN4177625");
 		System.out.println(prof2);
-		allProfessor.add(prof2);
+		myperson.add(prof2);
 		//some wrong values as input arguments
 		Professor prof3 = new Professor("%#^%#&^%&^$^%#", "287646",null, "GJ125872");
 		System.out.println(prof3);
-		allProfessor.add(prof3);
+		myperson.add(prof3);
 		
 		System.out.println("-----------COURSES---------");
 		Course course1 = new Course();
@@ -97,11 +123,19 @@ public class MainService {
 	try {
 	
 		createNewProfessor("James","Janis",ProfDegree.master, "JD5327816");
-		System.out.println(allProfessor);
+		for(Person tempP : myperson) {
+			if(tempP instanceof Professor) {
+				System.out.println(tempP);
+			}
+		}
 		
 		System.out.println(getProfessorById(1));
 		updateProfessorByid(2,"Lady","Master", ProfDegree.phd);
-		System.out.println(allProfessor);
+		for(Person tempP : myperson) {
+			if(tempP instanceof Professor) {
+				System.out.println(tempP);
+			}
+		}
 		
 	}  catch (Exception e) {
 		System.out.println(e.getMessage());
@@ -125,24 +159,34 @@ public class MainService {
 	}
 	
 	public static void filterAllProfessorsWithDegree(ProfDegree degree) {
-		for(Professor tempS : allProfessor) {
-			if (tempS.getDegree().equals(degree)) {
-				System.out.println(tempS);
+		for(Person tempP : myperson) {
+			if (tempP instanceof Professor) {
+				Professor tempProfessor = (Professor)tempP;
+				if (tempProfessor.getDegree().equals(degree))
+				System.out.println(tempProfessor);
 			}
 		}
 	}
-	public static void filterAllStudentswithlargerbirthyeartlargerthan2005() {
-		for(Student tempS : allStudents) {
-			if (tempS.getBirthYear()>2006) {
-				System.out.println(tempS);
+	public static void filterAllStudentswithlargerbirthyeartlargerthan2005(int Birthyear) {
+		ArrayList<Student>filteredStudents = new ArrayList<Student>();
+		for(Person tempS : myperson) {
+			if (tempS instanceof Student) {
+				Student tempStudent = (Student)tempS;
+				if (tempStudent.getBirthYear()==Birthyear) 
+					System.out.println(tempStudent);
+					
+				}
 			}
 		}
 	}
 	
 	public static void filterAllStudentswithfacultyITF(String faculty) {
-		for(Student tempS : allStudents) {
-			if (tempS.getFaculty().equals(faculty)){
-				System.out.println(tempS);
+		ArrayList<Student>filteredStudents = new ArrayList<Student>();
+		for(Person tempS : myperson) {
+			if (tempS instanceof Student){
+				Student tempStudent = (Student)tempS;
+				if (tempStudent.getFaculty().equals(faculty))
+				System.out.println(tempStudent);
 			}
 		}
 	}
@@ -154,6 +198,7 @@ public class MainService {
 			
 			}
 		}
+		
 	}
 	
 	public static void filteringFunctionsForGradeLessThan4() {
@@ -167,7 +212,7 @@ public class MainService {
 	
 	public static void createNewProfessor(String inputName, String inputSurname,
 			ProfDegree inputDegree, String inputPassportNumber) throws Exception{
-		for (Professor tempX: allProfessor)
+		for (Professor tempX: myperson)
 		{
 				
 			if(tempX.getPassportNumber().equals(inputPassportNumber)) {
@@ -179,7 +224,7 @@ public class MainService {
 	}
 	Professor newProfessor =
 	new Professor(inputName,inputSurname, inputDegree, inputPassportNumber);
-	allProfessor.add(newProfessor);
+	myperson.add(newProfessor);
 	
 	
 	
