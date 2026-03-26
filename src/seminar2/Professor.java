@@ -3,10 +3,8 @@ package seminar2;
 public class Professor extends Person {
 	//1. variables
 	private long id;
-	private String name;
-	private String surname;
 	private ProfDegree degree;
-	private String passportNumber;
+
 	
 	//helper variable and no need to create set or get for it
 	private static long counter = 0;
