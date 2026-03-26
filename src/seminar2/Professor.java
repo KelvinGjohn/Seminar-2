@@ -1,6 +1,6 @@
 package seminar2;
 
-public class Professor {
+public class Professor extends Person {
 	//1. variables
 	private long id;
 	private String name;
@@ -15,51 +15,17 @@ public class Professor {
 		return id;
 	}
 	
-	public String getName() {
-		return name;
-	}
-	
-	public String getSurname() {
-		return surname;
-	}
-	
 	public ProfDegree getDegree() {
 		return degree;
 	}
 	
-	public String getpassportNumber() {
-		return passportNumber;
-	}
 	
 	//3. setters
 	public void setId() {
 		id = counter;
 		counter++;
 	}
-	
-	public void setName(String inputName) {
-		if( (inputName != null) && (!inputName.isEmpty()) 
-			&& (inputName.matches("[A-Z]{1}[a-z]{2,15}([ ]{1}[A-Z]{1}[a-z]{2,15})?"))) {
-			name = inputName;
-		}
-		else
-		{
-			name = "Unknown";
-		}
-		
-	}
-	
-	public void setSurname(String inputSurname) {
-		if( (inputSurname != null) && (!inputSurname.isEmpty()) 
-			&& (inputSurname.matches("[A-Z]{1}[a-z]{2,15}([ ]{1}[A-Z]{1}[a-z]{2,15})?"))) {
-			surname = inputSurname;
-		}
-		else
-		{
-			surname = "Unknown";
-		}
-		
-	}
+
 	
 	public void setDegree(ProfDegree inputDegree) {
 		if(inputDegree!=null) {
@@ -71,35 +37,28 @@ public class Professor {
 		}
 	}
 	
-	public void setPassportNumber(String inputPassportNumber) {
-		if( (inputPassportNumber != null) && (!inputPassportNumber.isEmpty()
-				&& (inputPassportNumber.matches("[A-Z]{2}[0-9]{6}")))) {
-			passportNumber = inputPassportNumber;
-		}
-		else
-		{
-			passportNumber = "Unknown";
-		}
-	}
+	
 	
 	//4. no args constructor
 	public Professor() {
+		super("Karina","Skirmante","AS651873645" );
 		setId();
-		setName("Karina");
-		setSurname("Skirmante");
+		//setName("Karina");
+		//setSurname("Skirmante");
 		setDegree(ProfDegree.master);
-		setPassportNumber("AS651873645");
+		//setPassportNumber("AS651873645");
 	}
 	
 	
 	//5. args constructor
-	public Professor(String inputName, String inputSurname,
-			ProfDegree inputDegree, String inputpassportNumber) {
+	public Professor(
+			String inputNameString,String inputSurname,ProfDegree inputDegree, String inputPassport) {
+		super(inputNameString, inputSurname, inputPassport);
 		setId();
-		setName(inputName);
-		setSurname(inputSurname);
+		//setName(inputName);
+		//setSurname(inputSurname);
 		setDegree(inputDegree);
-		setPassportNumber(inputpassportNumber);
+		//setPassportNumber(inputpassportNumber);
 	}
 	//6. toString
 	public String toString() {

@@ -170,7 +170,7 @@ public class MainService {
 		for (Professor tempX: allProfessor)
 		{
 				
-			if(tempX.getpassportNumber().equals(inputPassportNumber)) {
+			if(tempX.getPassportNumber().equals(inputPassportNumber)) {
 			Exception myEx =
 					new Exception("Professor already exists");
 			throw myEx;
